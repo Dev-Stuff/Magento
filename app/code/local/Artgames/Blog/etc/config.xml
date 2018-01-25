@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Artgames_Blog>
+			<version>0.1.0</version>
+		</Artgames_Blog>
+	</modules>
+	<!--end module info -->
+
+	<global>
+
+		<!--start declare where the blocks are -->
+		<blocks>
+			<blog> <!-- this node can be anything, But as standard use the lowercase name of your module-->
+				<class>Artgames_Blog_Block</class> <!-- put entire path upto Block folder-->
+			</blog>
+		</blocks>
+		<!-- end declare where the blocks are-->
+
+	</global>
+
+
+	<frontend>
+	<!-- start definire ruta de frontend -->
+		<routers>
+			<blog><!-- this node is the lowercase name of your module-->
+				<use>standard</use>
+				<args>
+					<module>Artgames_Blog</module><!-- this node is the full path of your module-->
+					<frontName>blog</frontName> 
+					<!--
+						So, by defining a value of "blog" in the <frontName> tags, we're telling Magento that we want the system to respond to URLs in the form of http://example.com/blog/* 
+					-->
+				</args>
+			</blog>
+		</routers>
+	<!-- sfarsit definire ruta de frontend -->
+
+		<!-- start definire layout -->
+		<layout>
+			<updates>
+				<blog><!-- this node is the lowercase name of your module-->
+					<file>artgames.xml</file><!-- this is the layout file. Magento knwos to look in App/Code/Design/frontend or backend/base/default/layout-->
+				</blog>
+			</updates>
+		</layout>
+		<!-- sfarsit definire layout -->
+
+	</frontend>
+</config>
+
+
+
+

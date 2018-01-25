@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Artgames_Blog>
+			<!-- This activates the module, flip to false to deactivate -->
+			<active>true</active>
+			<codePool>local</codePool><!-- Remember we talked about code pools -->
+		</Artgames_Blog>
+	</modules>
+</config>
