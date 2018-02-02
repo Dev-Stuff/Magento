@@ -34,11 +34,11 @@
 		</models>
 		<!-- end declare where the model is-->
 
-		<helpers>
-	      <blog>
-	        <class>Artgames_Blog_Helper</class>
-	      </blog>
-	    </helpers>
+        <helpers>
+            <blog>
+                <class>Artgames_Blog_Helper</class>
+            </blog>
+        </helpers>
 
 	</global>
 
@@ -74,15 +74,16 @@
 
 	<admin>
         <routers>
-            <blog>
+            <artgames_blog>
                 <use>admin</use>
                 <args>
                     <module>Artgames_Blog</module>
-                    <frontname>blog</frontname>
+                    <frontName>blog</frontName>
                 </args>
-            </blog>
+            </artgames_blog>
         </routers>
     </admin>
+
 
 </config>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <config>
-    <acl>
+	<acl>
 		<resources>
 			<all>
 				<title>Allow Everything</title>
@@ -24,24 +24,24 @@
 		</resources>
 	</acl>
 
-<menu>
-    <blog translate="title" module="blog">
-        <title>Artgames Blog</title>
-        <sort_order>210</sort_order>
-            <children>
-	            <manage>
-	                    <title>Manage posts</title>
-	                    <sort_order>10</sort_order>
-	                    <action>adminhtml/admin/index</action>
-	                    <action>blog/adminus/index</action>
-	            </manage>
-	            <about>
-	                    <title>About</title>
-	                    <sort_order>10</sort_order>
-	                    <action>adminhtml/admin/info</action>
-	            </about>
-		    </children>
-    </blog> 
-</menu>
+	<menu>
+		<blog translate="title" module="blog">
+			<title>Artgames Blog</title>
+			<sort_order>210</sort_order>
+			<children>
+				<manage>
+					<title>Manage posts</title>
+					<sort_order>2</sort_order>
+					<action>adminhtml/admin/index</action>
+					<action>blog/admin/index</action>
+				</manage>
+				<about>
+					<title>About</title>
+					<sort_order>1</sort_order>
+					<action>blog/admin/info</action>
+				</about>
+			</children>
+		</blog> 
+	</menu>
 
 </config>
