@@ -2,7 +2,7 @@
 <layout version="0.1.0">
 	<default>
 		<reference name="root">
-			<action method="setTemplate"><template>page/1column.phtml</template></action>
+			<action method="setTemplate"><template>page/empty.phtml</template></action>
 		</reference>
 	</default>
 
@@ -14,6 +14,20 @@
 			</block>
 		</reference>
 	</blog_index_list>
+
+	<blog_index_post> <!-- identificator modul(nume modul s-a folosit peste tot), controller, actiune -->
+		<reference name="content">
+			<block type="blog/post" name="blog.post">
+			</block>
+		</reference>
+	</blog_index_post>
+
+	<blog_index_categories> <!-- identificator modul(nume modul s-a folosit peste tot), controller, actiune -->
+		<reference name="content">
+			<block type="blog/category" name="blog.category">
+			</block>
+		</reference>
+	</blog_index_categories>
 
 </layout>
 

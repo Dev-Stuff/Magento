@@ -17,11 +17,34 @@
 		</blocks>
 		<!-- end declare where the blocks are-->
 
+		<!--start declare where the model is -->
+		<models>
+			<blog> <!-- this node can be anything, But as standard use the lowercase name of your module-->
+				<class>Artgames_Blog_Model</class> <!-- put entire path upto Model folder-->
+				<resourceModel>blog_resource</resourceModel>
+			</blog>
+			<blog_resource>
+				<class>Artgames_Blog_Model_Resource</class>
+				<entities>
+					<blog>
+						<table>blog</table>
+					</blog>					
+				</entities>
+			</blog_resource>
+		</models>
+		<!-- end declare where the model is-->
+
+		<helpers>
+	      <blog>
+	        <class>Artgames_Blog_Helper</class>
+	      </blog>
+	    </helpers>
+
 	</global>
 
 
 	<frontend>
-	<!-- start definire ruta de frontend -->
+		<!-- start definire ruta de frontend -->
 		<routers>
 			<blog><!-- this node is the lowercase name of your module-->
 				<use>standard</use>
@@ -34,19 +57,33 @@
 				</args>
 			</blog>
 		</routers>
-	<!-- sfarsit definire ruta de frontend -->
+		<!-- sfarsit definire ruta de frontend -->
 
 		<!-- start definire layout -->
 		<layout>
 			<updates>
 				<blog><!-- this node is the lowercase name of your module-->
-					<file>artgames.xml</file><!-- this is the layout file. Magento knwos to look in App/Code/Design/frontend or backend/base/default/layout-->
+					<file>artgames.xml</file><!-- this is the layout file. Magento knwows to look in App/Code/Design/frontend or backend/base/default/layout-->
 				</blog>
 			</updates>
 		</layout>
 		<!-- sfarsit definire layout -->
 
 	</frontend>
+
+
+	<admin>
+        <routers>
+            <blog>
+                <use>admin</use>
+                <args>
+                    <module>Artgames_Blog</module>
+                    <frontname>blog</frontname>
+                </args>
+            </blog>
+        </routers>
+    </admin>
+
 </config>
 
 

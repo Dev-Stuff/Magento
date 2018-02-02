@@ -36,3 +36,6 @@
 2018-01-22T13:00:04+00:00 CRIT (2): Not valid template file:frontend\base\default\template\helloworld.phtml
 2018-01-22T13:00:06+00:00 CRIT (2): Not valid template file:frontend\base\default\template\helloworld.phtml
 2018-01-22T13:00:07+00:00 CRIT (2): Not valid template file:frontend\base\default\template\helloworld.phtml
+2018-01-31T13:12:04+00:00 CRIT (2): Not valid template file:frontend\base\default\template\artgames/blog/post.phtml
+2018-01-31T13:16:12+00:00 CRIT (2): Not valid template file:frontend\base\default\template\artgames/blog/post.phtml
+2018-01-31T13:16:35+00:00 CRIT (2): Not valid template file:frontend\base\default\template\artgames/blog/post.phtml

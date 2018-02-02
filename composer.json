@@ -1,0 +1,8 @@
+{
+    "require": {
+        "msp/devtools-m1": "^1.2"
+    },
+    "extra": {
+        "magento-root-dir": "http://127.0.0.1/mage/"
+    }
+}

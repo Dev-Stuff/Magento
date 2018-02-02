@@ -1,5 +1,162 @@
-<?php 
 
-echo $this->getContent();
+<div class='container'>
+	<div class='row'>
 
-?>
+		<!-- header image start -->
+		<div class='col-md-12'
+		style="
+		background: #abbaab;  /* fallback for old browsers */
+		background: -webkit-linear-gradient(to right, #ffffff, #abbaab);  /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		text-align:center;
+		">
+		<?php echo $this->getHeaderImage(); ?>
+
+	</div>
+	<!-- header image end -->
+
+	<!-- page title start -->
+	<div class='col-md-12'>
+		<hr>
+	</div>
+	<!-- page title end -->
+	<div class="col-md-9" >
+		<div class="row">
+
+			<div class="col-md-12">
+				<h4 style="text-align: center;color: grey;margin-bottom: 20px; margin-top: 15px;" class="badge badge-pill badge-secondary"> Latest posts: </h4>
+			</div>
+
+				<?php 
+				foreach ($this->getPosts() as $key => $post) {
+					echo "
+					<div class='col-md-3'>
+					<div class='row'>
+					<div class='col-sm-4'>
+					<img src='" . Mage::getBaseUrl('media') .'blog/user.svg' . "' alt='error' style='height: 45px;display: inline-block;border-radius: 38px;border: 1px solid lightgray;'>
+					</div>
+					<div class='col-sm-8'>
+					<span style='display: block;font-size: 12px;'> <small><strong>Author:</strong> "  . ucwords($post->username) . "  </small></span>
+					<span style='display: block; line-height:1;font-size: 12px;'> <small><strong>Date:</strong> "  . $post->created_at . "</small></span>
+					<span style='display: block; line-height:1;font-size: 12px;'> <small><strong>Registered:</strong> 11.09.2016</small></span>
+					</div>
+					</div>
+					</div>
+
+					<div class='col-md-7' style='font-size: 13px;'>
+					<span> <strong>" . ucwords($post->title) ." </strong></span> <br />
+					" . substr($post->post, 0, 140) . " ... <a href='" . Mage::getBaseUrl()  . 'blog/index/post/id/' . $post->id ."'>see post</a>
+					</div>
+
+					<div class='col-md-2' style='font-size: 13px;'>
+						<img src='" . Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $post->image . "' alt='error' style='height: 45px; width: 75px; display: inline-block;border: 1px solid lightgray;'>
+					</div>
+
+					<div class='col-md-12'>
+					<hr style='margin-bottom: 8px;margin-top: 8px;'>
+					</div>
+					";
+				}
+
+				?>
+
+		</div>
+
+		<!-- form start -->
+
+		<div class="col-md-12">
+			<div class="row">
+
+				<div class="col-md-12"><span class="badge badge-pill badge-danger" style="margin-bottom: 15px;display: inline-block;background-color: grey;font-weight: 400;">Write your own post:</span></div>
+				<div class="col-md-8" style="padding-left: 0px;">
+					<form action="<?php echo Mage::getUrl('blog/index/create') ?>" method="POST" enctype='multipart/form-data'>
+						<input type="hidden" name="author" value='<?php echo Mage::getSingleton('customer/session')->getCustomer()->getFirstname(); ?>'>
+
+						<div class="form-group">
+							<input 
+							class="form-control"  
+							name="title" 
+							type="text"
+							<?php if (!$this->hasBlogWriteAccess()) { echo 'disabled title="You must be signed in on order to write a post!"';} ?>  
+							style ="border: 1px solid grey;"
+							>
+						</input>
+					</div>
+
+					<div class="form-group">
+						<textarea 
+						class="form-control" 
+						rows="3"  
+						name="post" 
+						placeholder="Describe yourself here..."
+						<?php if (!$this->hasBlogWriteAccess()) { echo 'disabled title="You must be signed in on order to write a post!"';} ?> 
+						style ="border: 1px solid grey;"
+						>
+					</textarea>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="form-group">
+					<select class="form-control-sm" name="category" >
+						<?php 
+							foreach ($this->getCategories() as $key => $value) {
+								echo "<option value='" . $value['name'] ."'>". $value['name']. "</option>";
+							}
+						?>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<select class="form-control-sm" name="slugs[]" multiple>
+						<?php 
+							foreach ($this->getSlugs() as $key => $value) {
+								echo "<option ='" . $value['name'] ."'>". $value['name']. "</option>";
+							}
+						?>
+					</select>
+				</div>
+
+					<div class="form-group">
+					    <input type="file" class="form-control-file" name="image">
+					  </div>
+
+			</div>
+			<button type="submit" class="btn btn-sm btn-danger">Submit</button>
+		</form>
+	</div>
+	<br />
+
+		</div>
+			</div>
+
+		<div class="col-md-3" style="
+			background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+			background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+			">
+			<h5 style="color: #686563; text-align: center;margin-top: 20px;">CATEGORIES</h5>
+			<hr>
+			<br />
+			<ul style="text-align: center;font-size: 13px;line-height: 2;">
+				<?php 
+					foreach ($this->getCategories() as $key => $value) {
+						echo "<a href='" . Mage::getBaseUrl() .'blog/index/categories/selected/' . $value['name']  . "'>" . "<li>" . $value['name']. "</li>" . "</a>";
+					}
+				?>
+			</ul>
+			<br />
+
+			<h5 style="color: #686563; text-align: center;">SLUGS</h5>
+			<hr>
+			<br />
+			<div style="text-align: center">
+				<?php 
+					foreach ($this->getSlugs() as $key => $value) {
+						echo "<span class='badge badge-primary' style='inline-block; margin-right:10px;background-color:grey;font-weight:400;'>" . $value['name']. '</span>' ;
+					}
+				?>
+			</div>
+		</div>
+
+	</div>
+</div>

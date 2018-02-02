@@ -1,0 +1,52 @@
+<div class='container'>
+    <div class='row'>
+
+        <!-- header image start -->
+        <div class='col-md-12'
+            style="
+            background: #abbaab;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #ffffff, #abbaab);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            text-align:center;
+            ">
+            <?php echo $this->getHeaderImage(); ?>
+        </div> 
+         <!-- header image end -->
+
+         <div class="col-md-12" style="margin-top: 15px;">
+             <span style="display: inline-block; float: left;"> <a href= "<?php echo Mage::getUrl() . 'blog/index/list'; ?>">< Back to posts</a></span>
+         </div>
+
+         <div class="col-md-12" style="margin-top: 20px;text-align: center;">
+             <h3 style="display: inline-block;"> <?php echo $this->viewPost()->title ?> </h3>
+         </div>
+
+         <div class="col-md-12" style="text-align: center;margin-top: 25px; margin-bottom: 20px;">
+             <img src="<?php echo Mage::getBaseUrl('media') . $this->viewPost()->image ?>" style="max-width: 450px;display: inline;">
+         </div>
+
+         <div class="col-md-12" style="margin-top: 30px;text-align: center;">
+            <p><?php echo $this->viewPost()->post ?></p>
+            <hr style="border-top: 1px solid grey;">
+         </div>
+
+        <div class="col-md-6" style="text-align: left;">
+                         <small>Category:  <strong><?php echo $this->viewPost()->category ?></strong> </small>
+             <span> | </span>
+            <span> 
+                <?php 
+                    foreach (unserialize($this->viewPost()->slugs) as $key => $slug) {
+                            echo "<span class='badge badge-primary' style='inline-block; margin-right:10px;background-color:grey;font-weight:400;'>" . $slug . '</span>' ;
+                    }
+                 ?> 
+             </span>
+        </div>
+
+        <div class="col-md-3 offset-md-3" style="text-align: right;">
+                <span style='display: block;font-size: 12px;'> <small><strong>Author:</strong> <?php echo $this->viewPost()->username ?>  </small></span>
+                <span style='display: block; line-height:1;font-size: 12px;'> <small><strong>Date:</strong> <?php echo $this->viewPost()->created_at ?></small></span>
+        </div>
+
+
+    </div>
+</div>

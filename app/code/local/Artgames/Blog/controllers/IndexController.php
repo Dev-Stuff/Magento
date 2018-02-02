@@ -2,23 +2,65 @@
 
 class Artgames_Blog_IndexController extends Mage_Core_Controller_Front_Action {
 
-	public function mataAction () {
+	public $image_full_path;
 
-		// $this->loadLayout();
-  //   	$this->renderLayout();
-
-		$block_1 = new Mage_Core_Block_Text(); $block_1 ->setText('abasdksdskjda');
-		$block_2 = new Mage_Core_Block_Text(); $block_2 ->setText('adczczc');
-		$main_block = new Artgames_Blog_Block_Blog(); $main_block ->setTemplate('helloworld.phtml');
-		// $main_block ->setChild(’the_first’,$block_1); $main_block ->setChild(’the_second’,$block_2);
-		echo $main_block ->toHtml();
-
-	}
-
-	public function listAction() {
-		
+	public function listAction() 
+	{
 		$this->loadLayout();
 		$this->renderLayout();
+	}
+
+	public function createAction() 
+	{
+		$post = $this->getRequest()->getParams();
+		$newPost = Mage::getModel('blog/blog');
+
+		$newPost->title = $post['title'];
+		$newPost->post = $post['post'];
+		$newPost->username = $post['author'];
+		$newPost->created_at = date("Y/m/d/h:i:sa");
+		$newPost->category = $post['category'];
+		$newPost->slugs = serialize($post['slugs']);
+		$this->uploadAction();
+		$newPost->image = $this->image_full_path;
+		$newPost->save();
+
+		$this->_redirectReferer();
+	}
+
+	public function postAction ()
+	{
+		$this->loadLayout();
+		$this->renderLayout();
+	}
+
+	public function categoriesAction ()
+	{
+		$this->loadLayout();
+		$this->renderLayout();
+	}
+
+	public function uploadAction()
+	{
+        if( !empty($_FILES['image']['name']) ){
+            try {
+	            	$uploaded_image = $_FILES['image']['name'];
+					$extension = substr($uploaded_image, strpos($uploaded_image, ".") + 1);    
+					$full_name = uniqid() . '.'. $extension;
+	                $uploader = new Varien_File_Uploader('image');
+	                $uploader->setAllowedExtensions(array('jpg', 'jpeg', 'gif', 'png'));
+	                $uploader->setAllowRenameFiles(true);
+	                $uploader->setFilesDispersion(false);
+	                $path = Mage::getBaseDir('media') . DS; // where we save images
+	                $result = $uploader->save($path, $full_name);
+                $this->extension = $extension;
+            	} catch (Exception $e) {
+	                echo $e->getMessage();
+		        }
+	    }
+
+	    $this->image_full_path = $result['file'];
+	    return $result;
 	}
 
 }
