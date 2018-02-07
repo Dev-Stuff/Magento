@@ -74,16 +74,25 @@
 
 	<admin>
         <routers>
-            <artgames_blog>
+            <blog>
                 <use>admin</use>
                 <args>
                     <module>Artgames_Blog</module>
-                    <frontName>blog</frontName>
+                    <frontName>artgames_blog</frontName>
                 </args>
-            </artgames_blog>
+            </blog>
         </routers>
     </admin>
 
+    <adminhtml>
+        <layout>
+            <updates>
+                <blog>
+                    <file>artgames.xml</file>
+                </blog>
+            </updates>
+        </layout>
+    </adminhtml>
 
 </config>
 

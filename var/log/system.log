@@ -39,3 +39,7 @@
 2018-01-31T13:12:04+00:00 CRIT (2): Not valid template file:frontend\base\default\template\artgames/blog/post.phtml
 2018-01-31T13:16:12+00:00 CRIT (2): Not valid template file:frontend\base\default\template\artgames/blog/post.phtml
 2018-01-31T13:16:35+00:00 CRIT (2): Not valid template file:frontend\base\default\template\artgames/blog/post.phtml
+2018-02-05T08:40:11+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\page/empty.phtml
+2018-02-05T13:54:56+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\artgames/blog/list.phtml
+2018-02-05T13:54:58+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\artgames/blog/list.phtml
+2018-02-05T13:55:26+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\artgames/blog/list.phtml

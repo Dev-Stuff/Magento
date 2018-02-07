@@ -3,6 +3,7 @@
 
 class Artgames_Blog_AdminController extends Mage_Adminhtml_Controller_Action
 {  
+
     public function indexAction()
     {
         $this->loadLayout();
@@ -17,11 +18,26 @@ class Artgames_Blog_AdminController extends Mage_Adminhtml_Controller_Action
     public function infoAction()
     {
         $this->loadLayout();
+        $this->renderLayout();
          
-        $block = $this->getLayout()->createBlock('core/text', 'green-block')->setText('<h1>About this blog etc etc </h1>');
-        $this->_addContent($block);
+        // $block = $this->getLayout()->createBlock('core/text', 'green-block')->setText('<h1>About this blog etc etc </h1>');
+        // $this->_addContent($block);
          
-        $this->_setActiveMenu('blog')->renderLayout();      
+        // $this->_setActiveMenu('blog')->renderLayout();      
     }  
 
+    public function testAction()
+    {
+
+        $this->loadLayout();
+         
+        $block = $this->getLayout()->createBlock('core/text', 'asdadasada')->setText('<h1>TEEEEESTTT </h1>');
+        $this->_addContent($block);
+         
+        $this->_setActiveMenu('blog')->renderLayout();    
+    }
+
+
+
+ 
 }
